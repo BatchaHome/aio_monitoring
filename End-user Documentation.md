@@ -20,7 +20,8 @@ Tmux and Multitail need to be installed on the system beforehand.
 
 **User Guide:**
 Use sudo -E ./launcher.sh
-The will launch and manage 2 different terminal windows on the screen, one with the real-time monitoring of metrics and another with logs. The logs are also saved to a separate folder.
+
+This command will launch and manage 2 different terminal windows on the screen, one with the real-time monitoring split-screen metrics and another with logs. The logs are also saved to a separate folder.
 
 **All required files/scripts**
 
