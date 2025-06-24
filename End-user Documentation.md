@@ -26,10 +26,13 @@ This command will launch and manage 2 different terminal windows on the screen, 
 **All required files/scripts**
 
 1. System.sh
+
 Displays information about the system like OS, Kernel.
 
 2. CPU.sh
+
 Displays top 10 most CPU consuming programs with the command that formats the output into a human-readable table with aligned columns:
+
 ps -eo pid,user,comm,%cpu,etime --no-headers | sort -k4 -nr | head -n 10 | \
     awk 'BEGIN {
         printf "%-6s %-10s %-20s %-10s %-10s\n", "PID", "USER", "COMMAND", "%CPU", "ELAPSED"
@@ -39,7 +42,9 @@ ps -eo pid,user,comm,%cpu,etime --no-headers | sort -k4 -nr | head -n 10 | \
     }'
 
 3. Ram.sh
+
 Displays top 10 most Ram consuming programs with the command that sorts the programs from most to least consuming:
+
  ps -eo pid,user,comm,%mem,etime --no-headers | sort -k4 -nr | head -n 10 | \
     awk 'BEGIN {
         printf "%-6s %-10s %-20s %-10s %-10s\n", "PID", "USER", "COMMAND", "%MEM", "ELAPSED"
@@ -49,6 +54,7 @@ Displays top 10 most Ram consuming programs with the command that sorts the prog
     }'
 
 4. Disk.sh
+
 The following command allows disk monitoring with real-time overall disk I/O stats and lists the top processes consuming disk resources, sorted by usage.
 
     iostat -d 1 1
@@ -62,13 +68,16 @@ The following command allows disk monitoring with real-time overall disk I/O sta
     '
 
 5. Network.sh
+
 //Julien//
 
 6. Launcher.sh
+
 This will first validate sudo permission. This once sudo is checked the launcher will start the tmux_launcher.sh and multitail_logs.sh
 
 
 7. Multitails_logs.sh
+
 It live-monitors and logs SSH, authentication, network connections, system errors, firewall activity, and service/process events in parallel using multitail in the following command:
 multitail -s 2 \
     -l "journalctl -f -u ssh -u sshd | tee -a $dir_name/ssh.logs" \
@@ -79,4 +88,5 @@ multitail -s 2 \
     -l "journalctl -f --no-pager | grep -E -i '(started|stopped|failed|reloaded)' | tee -a $dir_name/services_processes.logs"
 
 8. Tmux.sh
+
 Window management
