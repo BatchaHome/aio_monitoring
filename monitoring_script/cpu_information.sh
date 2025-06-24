@@ -13,7 +13,6 @@ function get_monitoring_data {
     }'
 }
 
-tput civis
 # Trap to restore cursor on exit
 clear 
 # Initial display

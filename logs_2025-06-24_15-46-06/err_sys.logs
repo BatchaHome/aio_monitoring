@@ -1,0 +1,9 @@
+Jun 24 17:39:32 kali kernel: snd_hda_intel 0000:01:01.0: CORB reset timeout#1, CORBRP = 0
+Jun 24 17:39:36 kali pipewire[1158]: spa.v4l2: '/dev/video0' VIDIOC_QUERYCTRL: Broken pipe
+Jun 24 17:39:36 kali pipewire[1158]: spa.v4l2: '/dev/video0' VIDIOC_QUERYCTRL: Broken pipe
+Jun 24 17:39:38 kali lightdm[1234]: gkr-pam: unable to locate daemon control file
+Jun 24 17:39:38 kali lightdm[1128]: pam_systemd(lightdm-greeter:session): Failed to release session: Transport endpoint is not connected
+Jun 24 17:39:40 kali pipewire[1272]: spa.v4l2: '/dev/video0' VIDIOC_QUERYCTRL: Broken pipe
+Jun 24 17:39:40 kali pipewire[1272]: spa.v4l2: '/dev/video0' VIDIOC_QUERYCTRL: Broken pipe
+Jun 24 17:39:40 kali obexd[1699]: Unable to acquire registry: Error calling StartServiceByName for org.gnome.evolution.dataserver.Sources5: Unit evolution-source-registry.service not found.
+Jun 24 17:39:40 kali obexd[1699]: Unable to acquire registry: Error calling StartServiceByName for org.gnome.evolution.dataserver.Sources5: Unit evolution-source-registry.service not found.

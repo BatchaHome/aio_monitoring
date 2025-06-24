@@ -16,7 +16,6 @@ function get_monitoring_data {
 }
 
 # Hide cursor for cleaner display
-tput civis
 
 # Trap to restore cursor on exit
 clear 

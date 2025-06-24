@@ -1,0 +1,4 @@
+Jun 24 17:39:33 kali systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Jun 24 17:39:33 kali sshd[900]: Server listening on 0.0.0.0 port 22.
+Jun 24 17:39:33 kali sshd[900]: Server listening on :: port 22.
+Jun 24 17:39:33 kali systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
