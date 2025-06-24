@@ -14,8 +14,8 @@ function get_monitoring_data {
 }
 
 # Trap to restore cursor on exit
-clear 
 # Initial display
+clear
 get_monitoring_data
 
 # while true; do

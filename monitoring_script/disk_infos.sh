@@ -15,16 +15,5 @@ function get_monitoring_data {
     '
 }
 
-# Hide cursor for cleaner display
-
-# Trap to restore cursor on exit
-clear 
-# Initial display
+clear
 get_monitoring_data
-
-# while true; do
-#     sleep 1
-#     # Move cursor to top-left (1,1) without clearing
-#     tput cup 0 0
-#     get_monitoring_data
-# done

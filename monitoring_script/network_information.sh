@@ -91,7 +91,7 @@ function get_monitoring_data {
     echo "LOCAL IP ADDRESS: $(hostname -I | awk '{print $1}')"
     echo "PUBLIC IP ADDRESS: $(curl -s https://api.ipify.org)"
     echo "OPEN PORTS:"
-    ss -tuln
+    ss -tulpn
     echo 
     get_bandwidth_status
     echo
@@ -105,17 +105,5 @@ function get_monitoring_data {
     done
 }
 
-# Hide cursor for cleaner display
-
-# Trap to restore cursor on exit
-clear 
-# Initial display
+clear
 get_monitoring_data
-
-# while true; do
-#     sleep 1
-#     # Move cursor to top-left (1,1) without clearing
-#     tput cup 0 0
-#     get_monitoring_data
-# done
-

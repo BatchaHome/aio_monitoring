@@ -36,6 +36,7 @@ MONITOR_SCRIPT="./tmux_launcher.sh"
 LOGS_SCRIPT="./multitail_logs.sh"
 
 
+
 # Tentatives de lancement selon le terminal disponible
 if command -v gnome-terminal &>/dev/null; then
     gnome-terminal --geometry=${COLS}x${ROWS} -- bash -c "$MONITOR_SCRIPT; exec bash" &
@@ -58,12 +59,10 @@ elif command -v qterminal &>/dev/null; then
     qterminal --geometry ${W_LOG}x${H_LOG} -e "$LOGS_SCRIPT" &
     
 elif [[ "$TERM" == xterm* ]]; then
-    echo "⚠️ Terminal détecté mais aucun terminal graphique trouvé."
-    echo "▶️ Lancement direct du script dans ce terminal..."
-    "$MONITOR_SCRIPT"
-    "$LOGS_SCRIPT"
+    $MONITOR_SCRIPT
+    $LOGS_SCRIPT
 else
-    echo "❌ Aucun terminal compatible trouvé."
-    echo "💡 Installez-en un comme : gnome-terminal, xfce4-terminal, xterm, etc."
+    echo "Sorry didn't find any terminal suit to run this script."
+    echo "Please install another one."
     exit 1
 fi

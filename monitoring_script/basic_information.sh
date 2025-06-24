@@ -10,9 +10,9 @@ function get_temp {
 }
 
 function get_ram {
-    mem_total_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    mem_free_kb=$(grep MemFree /proc/meminfo | awk '{print $2}')
-    mem_available_kb=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
+    mem_total_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}' &)
+    mem_free_kb=$(grep MemFree /proc/meminfo | awk '{print $2}' &)
+    mem_available_kb=$(grep MemAvailable /proc/meminfo | awk '{print $2}' &)
 
     
     mem_total_mb=$((mem_total_kb / 1024))
@@ -21,8 +21,8 @@ function get_ram {
     mem_used_mb=$((mem_total_mb - mem_free_mb - buffers_mb - cached_mb))
 
     # Swap info
-    swap_total_kb=$(grep SwapTotal /proc/meminfo | awk '{print $2}')
-    swap_free_kb=$(grep SwapFree /proc/meminfo | awk '{print $2}')
+    swap_total_kb=$(grep SwapTotal /proc/meminfo | awk '{print $2}' &)
+    swap_free_kb=$(grep SwapFree /proc/meminfo | awk '{print $2}' &)
     swap_total_mb=$((swap_total_kb / 1024))
     swap_free_mb=$((swap_free_kb / 1024))
     swap_used_mb=$((swap_total_mb - swap_free_mb))
@@ -37,24 +37,24 @@ function get_ram {
 function get_monitoring_data {
     echo "===== AIO MONITORING - $(date +%c) ====="
     echo
-    echo "UPTIME: $(uptime -p)"
-    echo "HOSTNAME: $(hostname)"
-    echo "USERNAME: $(whoami)"
-    echo "OS: $(uname -o 2>/dev/null || echo "Unavailable")"
-    echo "KERNEL: $(uname -r)"
+    echo "UPTIME: $(uptime -p &)"
+    echo "HOSTNAME: $(hostname &)"
+    echo "USERNAME: $(whoami &)"
+    echo "OS: $(uname -o 2>/dev/null || echo "Unavailable" &)"
+    echo "KERNEL: $(uname -r &)"
     echo
-    echo "CPU USAGE: $(top -bn1 | grep "Cpu(s)" | awk '{print $2 "%"}')"
-    echo "CPU TEMPERATURE: $(get_temp)"
-    get_ram
+    echo "CPU USAGE: $(top -bn1 | grep "Cpu(s)" | awk '{print $2 "%"}' &)"
+    echo "CPU TEMPERATURE: $(get_temp &)"
+    get_ram 
     echo "DISK:"
-    df -h --output=source,size,used,avail /
+    df -h --output=source,size,used,avail / &
 }
 
 # Hide cursor for cleaner display
 
 # Trap to restore cursor on exit
-clear 
 # Initial display
+clear
 get_monitoring_data
 
 # while true; do
