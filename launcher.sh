@@ -40,33 +40,28 @@ LOGS_SCRIPT="./multitail_logs.sh"
 if command -v gnome-terminal &>/dev/null; then
     gnome-terminal --geometry=${COLS}x${ROWS} -- bash -c "$MONITOR_SCRIPT; exec bash" &
     gnome-terminal --geometry=${COLS}x${ROWS} -- bash -c "$LOGS_SCRIPT; exec bash" &
-    
-
 
 elif command -v xfce4-terminal &>/dev/null; then
     xfce4-terminal --geometry=${COLS}x${ROWS} --command="$MONITOR_SCRIPT" &
     xfce4-terminal --geometry=${COLS}x${ROWS} --command="$LOGS_SCRIPT" &
    
-
 elif command -v xterm &>/dev/null; then
-    xterm -geometry ${COLS}x${ROWS} -e "$MONITOR_SCRIPT"
-    xterm -geometry ${COLS}x${ROWS} -e "$LOGS_SCRIPT"
+    xterm -geometry ${COLS}x${ROWS} -e "$MONITOR_SCRIPT" &
+    xterm -geometry ${COLS}x${ROWS} -e "$LOGS_SCRIPT" &
 
 elif command -v konsole &>/dev/null; then
-    konsole --geometry ${COLS}x${ROWS} -e "$MONITOR_SCRIPT"
-    konsole --geometry ${COLS}x${ROWS} -e "$LOGS_SCRIPT"
+    konsole --geometry ${COLS}x${ROWS} -e "$MONITOR_SCRIPT" &
+    konsole --geometry ${COLS}x${ROWS} -e "$LOGS_SCRIPT" &
 
 elif command -v qterminal &>/dev/null; then
     qterminal --geometry ${W_LOG}x${H_LOG} -e "$MONITOR_SCRIPT" &
     qterminal --geometry ${W_LOG}x${H_LOG} -e "$LOGS_SCRIPT" &
     
-
 elif [[ "$TERM" == xterm* ]]; then
     echo "⚠️ Terminal détecté mais aucun terminal graphique trouvé."
     echo "▶️ Lancement direct du script dans ce terminal..."
     "$MONITOR_SCRIPT"
     "$LOGS_SCRIPT"
-
 else
     echo "❌ Aucun terminal compatible trouvé."
     echo "💡 Installez-en un comme : gnome-terminal, xfce4-terminal, xterm, etc."

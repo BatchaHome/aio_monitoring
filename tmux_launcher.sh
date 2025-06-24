@@ -27,24 +27,43 @@ tmux split-window -v -t $SESSION:main.3
 # Now assign commands to each pane:
 
 # Pane 0: your basic info
+# tmux select-pane -t 0
+# tmux send-keys "./monitoring_script/basic_information.sh" C-m
+
+# # Pane 1: CPU & memory usage
+# tmux select-pane -t 1
+# tmux send-keys "./monitoring_script/cpu_information.sh" C-m
+
+# # Pane 2: disk usage
+# tmux select-pane -t 2
+# tmux send-keys "./monitoring_script/disk_infos.sh" C-m
+
+# # Pane 3: top (process viewer)
+# tmux select-pane -t 3
+# tmux send-keys "./monitoring_script/ram_infos.sh" C-m
+
+# # Pane 4: new pane - e.g. logs tail or something else
+# tmux select-pane -t 4
+# tmux send-keys "./monitoring_script/network_information.sh" C-m
+
 tmux select-pane -t 0
-tmux send-keys "./monitoring_script/basic_information.sh" C-m
+tmux send-keys "watch -n1 ./monitoring_script/basic_information.sh" C-m
 
 # Pane 1: CPU & memory usage
 tmux select-pane -t 1
-tmux send-keys "./monitoring_script/cpu_information.sh" C-m
+tmux send-keys "watch -n1 ./monitoring_script/cpu_information.sh" C-m
 
 # Pane 2: disk usage
 tmux select-pane -t 2
-tmux send-keys "./monitoring_script/disk_infos.sh" C-m
+tmux send-keys "watch -n1 ./monitoring_script/disk_infos.sh" C-m
 
 # Pane 3: top (process viewer)
 tmux select-pane -t 3
-tmux send-keys "./monitoring_script/ram_infos.sh" C-m
+tmux send-keys "watch -n1 ./monitoring_script/ram_infos.sh" C-m
 
 # Pane 4: new pane - e.g. logs tail or something else
 tmux select-pane -t 4
-tmux send-keys "./monitoring_script/network_information.sh" C-m
+tmux send-keys "watch -n1 ./monitoring_script/network_information.sh" C-m
 
 # Optional: adjust layout to tiled for better distribution
 tmux select-layout tiled

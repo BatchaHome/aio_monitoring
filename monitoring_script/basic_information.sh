@@ -48,21 +48,19 @@ function get_monitoring_data {
     get_ram
     echo "DISK:"
     df -h --output=source,size,used,avail /
-
 }
 
 # Hide cursor for cleaner display
 tput civis
 
 # Trap to restore cursor on exit
-trap 'tput cnorm; exit' INT TERM
 clear 
 # Initial display
 get_monitoring_data
 
-while true; do
-    sleep 1
-    # Move cursor to top-left (1,1) without clearing
-    tput cup 0 0
-    get_monitoring_data
-done
+# while true; do
+#     sleep 1
+#     # Move cursor to top-left (1,1) without clearing
+#     tput cup 0 0
+#     get_monitoring_data
+# done
