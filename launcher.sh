@@ -5,25 +5,42 @@ if ! sudo -v; then
     exit 1
 fi
 
-if ! command -v multitail &> /dev/null; then
-    echo "multitail is not installed."
-    echo "We are using multitail as monitor display so please install it to use this tool."
-    echo "Installation:"
-    echo "  Ubuntu/Debian: sudo apt install multitail"
-    echo "  CentOS/RHEL: sudo yum install multitail"
-    echo "  Fedora: sudo dnf install multitail"
-    exit 1
-fi
+function CheckCommand {
+    declare -A commands=(
+        ["multitail"]="We are using multitail as monitor display so please install it to use this tool."
+        ["tmux"]="We are using tmux as monitor display so please install it to use this tool."
+        ["iostat"]="iostat reports CPU and I/O statistics for devices, partitions, and the system overall."
+        ["pidstat"]="pidstat shows statistics per PID (process), including CPU usage, I/O, memory, and task scheduling info."
+        ["ss"]="ss displays socket statistics (TCP, UDP, etc.)."
+        ["lsof"]="lsof Lists all open files by processes. In Unix, everything is a file (sockets, devices, etc.)."
+    )
 
-if ! command -v tmux &> /dev/null; then
-    echo "tmux is not installed."
-    echo "We are using tmux as monitor display so please install it to use this tool."
-    echo "Installation:"
-    echo "  Ubuntu/Debian: sudo apt install tmux"
-    echo "  CentOS/RHEL: sudo yum install tmux"
-    echo "  Fedora: sudo dnf install tmux"
-    exit 1
-fi
+    # Check for missing commands
+    missing_commands=()
+    for cmd in "${!commands[@]}"; do
+        if ! command -v "$cmd" &> /dev/null; then
+            missing_commands+=("$cmd")
+        fi
+    done
+
+    # If any commands are missing, display installation instructions and exit
+    if [ ${#missing_commands[@]} -gt 0 ]; then
+        echo "The following required commands are not installed:"
+        echo
+        
+        for cmd in "${missing_commands[@]}"; do
+            echo "• $cmd is not installed."
+            echo "  ${commands[$cmd]}"
+            echo "  Installation:"
+            echo "    Ubuntu/Debian: sudo apt install $cmd"
+            echo "    CentOS/RHEL: sudo yum install $cmd"
+            echo "    Fedora: sudo dnf install $cmd"
+            echo
+        done
+        
+        exit 1
+    fi
+}
 
 # Configuration
 ROWS=40

@@ -11,7 +11,7 @@ touch "$dir_name/firewall.logs" ; chmod 777 "$dir_name/firewall.logs"
 touch "$dir_name/services_processes.logs" ; chmod 777 "$dir_name/services_processes.logs"
 touch "$dir_name/last_users.logs"; chmod 777 "$dir_name/last_users.logs"
 
-echo "LAST USERS CONNECTED: " >> >> $dir_name/last_users.logs
+echo "LAST USERS CONNECTED: " >>  $dir_name/last_users.logs
 last -F > $dir_name/last_users.logs
 
 for user in $(last -F | awk '{print $1}' | sort -u); do

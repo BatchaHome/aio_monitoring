@@ -89,7 +89,6 @@ function get_monitoring_data {
     echo "===== NETWORK - $(date +%c) ====="
     echo
     echo "LOCAL IP ADDRESS: $(hostname -I | awk '{print $1}')"
-    echo "PUBLIC IP ADDRESS: $(curl -s https://api.ipify.org)"
     echo "OPEN PORTS:"
     ss -tulpn
     echo 
