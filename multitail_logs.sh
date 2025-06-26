@@ -45,6 +45,7 @@ multitail \
     -l "journalctl -f -p err --no-pager | tee -a $dir_name/err_sys.logs" \
     -l "journalctl -f --no-pager | grep -i -E '(iptables|ufw|firewall|DROP|REJECT|BLOCK)' | tee -a $dir_name/firewall.logs" \
     -l "journalctl -f --no-pager | grep -E -i '(started|stopped|failed|reloaded)' | tee -a $dir_name/services_processes.logs" \
+    
     # Display SSH/SSHD logs
     # Display AUTHENTICATION/SECURITY logs
     # Display CONNECTION IN REAL TIME logs

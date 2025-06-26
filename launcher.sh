@@ -42,6 +42,8 @@ function CheckCommand {
     fi
 }
 
+CheckCommand
+
 # Configuration
 ROWS=40
 COLS=120
