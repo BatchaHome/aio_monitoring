@@ -13,6 +13,7 @@ function CheckCommand {
         ["pidstat"]="pidstat shows statistics per PID (process), including CPU usage, I/O, memory, and task scheduling info."
         ["ss"]="ss displays socket statistics (TCP, UDP, etc.)."
         ["lsof"]="lsof Lists all open files by processes. In Unix, everything is a file (sockets, devices, etc.)."
+        ["last"]="last display the last connect users"
     )
 
     # Check for missing commands
@@ -25,21 +26,29 @@ function CheckCommand {
 
     # If any commands are missing, display installation instructions and exit
     if [ ${#missing_commands[@]} -gt 0 ]; then
-        echo "The following required commands are not installed:"
-        echo
-        
-        for cmd in "${missing_commands[@]}"; do
-            echo "• $cmd is not installed."
-            echo "  ${commands[$cmd]}"
-            echo "  Installation:"
+    echo "The following required commands are not installed:"
+    echo
+
+    for cmd in "${missing_commands[@]}"; do
+        echo "• $cmd is not installed."
+        echo "  ${commands[$cmd]}"
+        echo "  Installation:"
+
+        if [[ "$cmd" != "last" ]]; then
             echo "    Ubuntu/Debian: sudo apt install $cmd"
             echo "    CentOS/RHEL: sudo yum install $cmd"
             echo "    Fedora: sudo dnf install $cmd"
-            echo
-        done
-        
-        exit 1
-    fi
+        else
+            echo "    Ubuntu/Debian: sudo apt install util-linux"
+            echo "    CentOS/RHEL: sudo yum install util-linux"
+            echo "    Fedora: sudo dnf install util-linux"
+        fi
+
+        echo
+    done
+
+    exit 1
+fi
 }
 
 CheckCommand
