@@ -2,20 +2,20 @@
 
 > A comprehensive, real-time system monitoring tool that provides unified visibility into CPU, RAM, disk, network performance, and system logs.
 
-## 📖 Overview
+## Overview
 
 **AIO Monitoring** is an all-in-one system monitoring solution designed to give system administrators and power users complete visibility into their system's health and resource utilization. It combines multiple monitoring capabilities into a single, easy-to-use interface with real-time metrics and persistent log archival.
 
-## ✨ Features
+## Features
 
 ### Core Monitoring Capabilities
 
-- 📊 **CPU Monitoring** - Display top 10 CPU-consuming processes with PID, user, command, CPU usage, and elapsed time
-- 🧠 **RAM Monitoring** - Track top 10 memory-consuming processes with detailed resource breakdown
-- 💾 **Disk I/O Monitoring** - Real-time disk I/O statistics and process-level disk usage tracking
-- 🌐 **Network Monitoring** - Network connection statistics and socket information
-- 📋 **System Information** - Operating system, kernel, and hardware details
-- 🔐 **Comprehensive Logging** - Multi-stream log monitoring including:
+- **CPU Monitoring** - Display top 10 CPU-consuming processes with PID, user, command, CPU usage, and elapsed time
+- **RAM Monitoring** - Track top 10 memory-consuming processes with detailed resource breakdown
+- **Disk I/O Monitoring** - Real-time disk I/O statistics and process-level disk usage tracking
+- **Network Monitoring** - Network connection statistics and socket information
+- **System Information** - Operating system, kernel, and hardware details
+- **Comprehensive Logging** - Multi-stream log monitoring including:
   - SSH connection logs
   - Authentication and security events
   - Network connections
@@ -56,7 +56,7 @@ sudo apt update
 sudo apt install multitail tmux sysstat iproute2 lsof util-linux
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Basic Usage
 
@@ -92,7 +92,7 @@ For standalone monitoring of specific metrics, you can run individual scripts:
 ./monitoring_script/basic_information.sh
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 aio_monitoring/
@@ -110,7 +110,7 @@ aio_monitoring/
 └── [log archives]/                    # Automatically created log directory
 ```
 
-## 📊 Monitoring Details
+## Monitoring Details
 
 ### CPU Monitoring
 
@@ -163,7 +163,7 @@ Automatically captures and saves to dedicated log files:
 
 All logs are timestamped and persisted for audit and analysis purposes.
 
-## 🛠️ Architecture
+## Architecture
 
 ### Launcher (launcher.sh)
 
@@ -188,7 +188,7 @@ Handles log streaming and archival:
 - Displays multiple streams with color coding
 - Writes all data to persistent log files
 
-## 💡 Use Cases
+## Use Cases
 
 - **System Administration** - Monitor server health and resource usage
 - **Performance Troubleshooting** - Identify resource bottlenecks and heavy processes
@@ -197,14 +197,14 @@ Handles log streaming and archival:
 - **Development** - Debug application resource consumption
 - **System Maintenance** - Monitor system during maintenance windows
 
-## 🔒 Security Considerations
+## Security Considerations
 
 - The script requires **sudo privileges** for accessing system-level metrics and logs
 - Uses `-E` flag to preserve environment variables: `sudo -E ./launcher.sh`
 - All logs are stored locally; consider encryption for sensitive environments
 - Run on systems where you have administrative privileges
 
-## 📝 Logging
+## Logging
 
 By default, logs are saved to a timestamped directory created by the script. Each log category is stored separately for easy filtering and analysis.
 
@@ -219,7 +219,7 @@ Example log locations:
 └── services_processes.logs
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Missing Dependencies
 
@@ -243,7 +243,7 @@ Make scripts executable with:
 chmod +x *.sh monitoring_script/*.sh
 ```
 
-## 🔄 How It Works
+## How It Works
 
 1. **Initialization**: `launcher.sh` checks for dependencies and validates permissions
 2. **Monitoring**: `tmux_launcher.sh` creates a split-screen interface with multiple monitoring panes
@@ -253,15 +253,9 @@ chmod +x *.sh monitoring_script/*.sh
 ## �️ Roadmap & Future Enhancements
 
 Planned features for upcoming releases:
-- 🌡️ **Temperature Monitoring** - Add alerts for temperature thresholds
-- 🛡️ **IDS Integration** - Monitoring logs using Intrusion Detection Systems
-- 📧 **Email Alerts** - Notify administrator by email when alerts are triggered
-- 📈 **Historical Analytics** - Long-term trend analysis and reporting
+- **Temperature Monitoring** - Add alerts for temperature thresholds
+- **IDS Integration** - Monitoring logs using Intrusion Detection Systems
+- **Email Alerts** - Notify administrator by email when alerts are triggered
+- **Historical Analytics** - Long-term trend analysis and reporting
 
-## 📄 License
 
-This project is maintained by **BatchaHome**.
-
----
-
-**Last Updated:** October 28, 2025  
