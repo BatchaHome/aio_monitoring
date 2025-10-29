@@ -30,7 +30,7 @@
 - **Split-screen monitoring** - Real-time metrics dashboard in one terminal, logs in another
 - **Automatic terminal detection** - Support for GNOME Terminal, XFCE Terminal, Konsole, and more
 
-## 📋 Requirements
+## Requirements
 
 ### System Requirements
 
